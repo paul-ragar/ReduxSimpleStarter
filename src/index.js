@@ -1,15 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import CreateTodo from './components/create_todo'
+import TodosList from './components/todos_list'
+import TodoItem from './components/todo_item'
 
-import App from './components/app';
-import reducers from './reducers';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
 
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    // this.state = { todos: [] }
+    // var localTodos = [];
+    // localTodos = JSON.parse(localStorage.getItem("todos"))
+    // this.setState({ todos: localTodos })
+  }
+
+  render() {
+    return (
+      <div>
+        <CreateTodo />
+        <TodosList />
+      </div>
+    )
+  }
+}
+
+
+ReactDOM.render(<App />, document.querySelector('.container'));
